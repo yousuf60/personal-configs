@@ -395,15 +395,17 @@ binds {
     Mod+Alt+Ctrl+Right {spawn "ydotool" "mousemove" "--" "200" "0"; } //right
     Mod+Alt+Ctrl+Up {spawn "ydotool" "mousemove" "--" "0" "-200"; } //up
     Mod+Alt+Ctrl+Down {spawn "ydotool" "mousemove" "--" "0" "200"; }//down
-    Alt+Ctrl+A  {spawn "ydotool" "click" "C0"; }  //left click
+    ctrl+Alt+A  {spawn "ydotool" "click" "C0" ; }  //left click
+    Alt+A  {spawn "ydotool" "click" "C0" "-D" "300"; }  //left click (for links)
     Alt+Ctrl+S  {spawn "ydotool" "click" "0xC1"; } //right click
     Alt+Space  {spawn "ydotool" "click" "0x40"; }
     Alt+Ctrl+Space  {spawn "ydotool" "click" "0x80"; }
 
 
-    Alt+Ctrl+q {spawn "ydotool" "mousemove" "-w" "--" "0" "1"; } //up
-    Alt+Ctrl+w {spawn "ydotool" "mousemove" "-w" "--" "0" "-1"; }//down
-
+    Alt+Ctrl+q {spawn "ydotool" "mousemove" "-w" "--" "0" "1"; } //scroll up
+    Alt+Ctrl+w {spawn "ydotool" "mousemove" "-w" "--" "0" "-1"; }//scroll down
+    
+ 
 
     Mod+Ctrl+Left  { move-column-left; }
     Mod+Ctrl+Down  { move-window-down; }
