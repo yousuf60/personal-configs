@@ -132,7 +132,7 @@ layout {
     // preset-window-heights { }
 
     // You can change the default width of the new windows.
-    default-column-width { proportion 0.8; }  // 0.5; }
+    default-column-width { proportion 0.9; }  // 0.5; }
     // If you leave the brackets empty, the windows themselves will decide their initial width.
 //      default-column-width {}
 
@@ -339,6 +339,13 @@ window-rule {
     clip-to-geometry true
 }
 
+
+window-rule {
+	match title="block_keyboard"
+	match app-id="alacritty"
+	default-column-width {proportion 0.1;}
+}
+
 binds {
     // Keys consist of modifiers separated by + signs, followed by an XKB key name
     // in the end. To find an XKB name for a particular key, you may use a program
@@ -411,7 +418,7 @@ binds {
 
     Alt+Ctrl+q {spawn "ydotool" "mousemove" "-w" "--" "0" "1"; } //scroll up
     Alt+Ctrl+w {spawn "ydotool" "mousemove" "-w" "--" "0" "-1"; }//scroll down
-    Mod+Alt+Ctrl+L  { spawn "bash" "-c" "exec alacritty -e ~/.config/evtest_block_keyboard.sh"; }
+    Mod+Alt+Ctrl+L  { spawn "bash" "-c" "exec alacritty --title block_keyboard -e ~/.config/evtest_block_keyboard.sh"; }
     
  
 
