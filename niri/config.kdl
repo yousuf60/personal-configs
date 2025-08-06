@@ -311,7 +311,10 @@ window-rule {
     default-column-width {}
 }
 
+
+
 // Open the Firefox picture-in-picture player as floating by default.
+
 window-rule {
     // This app-id regular expression will work for both:
     // - host Firefox (app-id is "firefox")
@@ -319,6 +322,18 @@ window-rule {
     match app-id=r#"firefox$"# title="^Picture-in-Picture$"
     open-floating true
 }
+
+
+
+
+// block keyboard for any personal cause
+window-rule {
+	match title="block_my_keyboard_temporary"
+	
+	default-column-width {proportion 0.1;}
+}
+
+
 
 // Example: block out two password managers from screen capture.
 // (This example rule is commented out with a "/-" in front.)
@@ -340,11 +355,7 @@ window-rule {
 }
 
 
-window-rule {
-	match title="block_keyboard"
-	match app-id="alacritty"
-	default-column-width {proportion 0.1;}
-}
+
 
 binds {
     // Keys consist of modifiers separated by + signs, followed by an XKB key name
@@ -362,13 +373,13 @@ binds {
     Mod+Shift+Slash { show-hotkey-overlay; }
 
     // Suggested binds for running programs: terminal, app launcher, screen locker.
-    Mod+T hotkey-overlay-title="Open a Terminal: alacritty" { spawn "alacritty"; }
+    Mod+T hotkey-overlay-title="Open a Terminal: kitty" { spawn "kitty"; }
     Mod+D hotkey-overlay-title="Run an Application: fuzzel" { spawn "fuzzel"; }
     Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock" "--image" "~/.config/img/cat_underwater.jpg" "--scaling=fill"; }
 
     // You can also use a shell. Do this if you need pipes, multiple commands, etc.
     // Note: the entire command goes as a single argument in the end.
-    // Mod+T { spawn "bash" "-c" "notify-send hello && exec alacritty"; }
+    // Mod+T { spawn "bash" "-c" "notify-send hello && exec kitty"; }
 
     // Example volume keys mappings for PipeWire & WirePlumber.
     // The allow-when-locked=true property makes them work even when the session is locked.
@@ -418,7 +429,7 @@ binds {
 
     Alt+Ctrl+q {spawn "ydotool" "mousemove" "-w" "--" "0" "1"; } //scroll up
     Alt+Ctrl+w {spawn "ydotool" "mousemove" "-w" "--" "0" "-1"; }//scroll down
-    Mod+Alt+Ctrl+L  { spawn "bash" "-c" "exec alacritty --title block_keyboard -e ~/.config/evtest_block_keyboard.sh"; }
+    Mod+Alt+Ctrl+L  { spawn "bash" "-c" "exec kitty --title block_my_keyboard_temporary -e ~/.config/evtest_block_keyboard.sh"; }
     
  
 
@@ -569,13 +580,15 @@ binds {
     Mod+Shift+R { switch-preset-window-height; }
     Mod+Ctrl+R { reset-window-height; }
     Mod+F { maximize-column; }
-    Mod+Shift+F { fullscreen-window; }
+    Mod+Shift+F {fullscreen-window; }
+    
 
     // Expand the focused column to space not taken up by other fully visible columns.
     // Makes the column "fill the rest of the space".
     Mod+Ctrl+F { expand-column-to-available-width; }
 
     Mod+C { center-column; }
+    Mod+z { spawn "pkill" "-USR1" "waybar"; }
 
     // Center all fully visible columns on screen.
     Mod+Ctrl+C { center-visible-columns; }
@@ -642,3 +655,4 @@ binds {
 
 
 }
+
