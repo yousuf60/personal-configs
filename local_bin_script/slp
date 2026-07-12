@@ -1,0 +1,10 @@
+#!/usr/bin/bash
+secs_interval=$((60 * $1))
+lp=0
+while true; do
+sleep $secs_interval
+echo -e "\a"
+lp=$(($lp+1))
+echo "    "  $lp
+notify-send -t 120000  "$lp  " $secs_interval   
+done
