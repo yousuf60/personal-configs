@@ -1,0 +1,2 @@
+
+sudo rtcwake -u -s $(($1)) -m mem
