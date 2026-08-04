@@ -1,9 +1,18 @@
 #!/usr/bin/bash
-secs_interval=$((60 * $1))
+
+if [ "$1" != "s" ]; then
+	secs_interval=$((60*$1))
+else 
+	secs_interval="$2";
+fi
+
 lp=0
+
 while true; do
-sleep $secs_interval
 echo -e "\a"
+sleep .2
+echo -e "\a"
+sleep $secs_interval
 lp=$(($lp+1))
 echo "    "  $lp
 notify-send -t 120000  "$lp  " $secs_interval   
