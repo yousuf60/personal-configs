@@ -1,0 +1,16 @@
+cd ~/
+tmux new -t monitor -d 
+tmux send-keys -t monitor:0 "btop" Enter
+tmux split-window -v -p 30
+tmux split-window -h
+tmux send-keys "slp 6" Enter
+tmux new-window -t monitor
+
+
+
+
+# etc ... 
+
+
+
+tmux a -t monitor:0
